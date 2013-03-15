@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS osbb_shared CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS osbb_test CHARACTER SET = utf8 COLLATE = utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS osbb_another CHARACTER SET = utf8 COLLATE = utf8_general_ci;
