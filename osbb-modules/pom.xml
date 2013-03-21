@@ -14,6 +14,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>osbb-datasource</module>
                 <module>osbb-model</module>
             </modules>
         </profile>
@@ -22,6 +23,11 @@
     <dependencyManagement>
         <dependencies>
             <!-- Module dependencies -->
+            <dependency>
+                <groupId>org.osbb</groupId>
+                <artifactId>osbb-datasource</artifactId>
+                <version>${osbb.modules.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.osbb</groupId>
                 <artifactId>osbb-model</artifactId>
