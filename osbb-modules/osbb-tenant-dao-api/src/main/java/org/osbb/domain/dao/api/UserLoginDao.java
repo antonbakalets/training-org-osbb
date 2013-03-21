@@ -1,4 +1,4 @@
-package org.osbb.domain.dao.api.shared;
+package org.osbb.domain.dao.api;
 
 import org.osbb.domain.model.shared.UserLogin;
 

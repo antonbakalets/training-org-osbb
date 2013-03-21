@@ -17,6 +17,7 @@
                 <module>osbb-datasource</module>
                 <module>osbb-model</module>
                 <module>osbb-tenant-dao-api</module>
+                <module>osbb-tenant-dao-hibernate</module>
             </modules>
         </profile>
     </profiles>
@@ -37,6 +38,11 @@
             <dependency>
                 <groupId>org.osbb</groupId>
                 <artifactId>osbb-tenant-dao-api</artifactId>
+                <version>${osbb.modules.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osbb</groupId>
+                <artifactId>osbb-tenant-dao-hibernate</artifactId>
                 <version>${osbb.modules.version}</version>
             </dependency>
             

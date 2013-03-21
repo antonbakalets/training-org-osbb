@@ -1,4 +1,4 @@
-package org.osbb.domain.dao;
+package org.osbb.domain.dao.api;
 
 import java.util.List;
 import org.osbb.domain.bean.PaginationBean;
