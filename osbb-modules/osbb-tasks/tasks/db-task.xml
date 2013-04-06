@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir=".." default="db-populate" name="db-task">
+    
+    <property file="tasks/task.properties"/>
+    
+    <path id="jdbc.driver.classpath">
+        <fileset dir="${jdbc.driver.directory}" erroronmissingdir="true">
+            <include name="${jdbc.driver.file}"/>
+        </fileset>
+    </path>
+    
+    <property name="database.url.empty" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/?${jdbc.connection.properties}"/>
+    <property name="database.url.default" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/osbb_shared?${jdbc.connection.properties}"/>
+    <property name="database.url.test" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/osbb_test?${jdbc.connection.properties}"/>
+    <property name="database.url.another" value="jdbc:mysql://${jdbc.host}:${jdbc.port}/osbb_another?${jdbc.connection.properties}"/>
+    
+    <target name="db-create-databases" description="Create databases.">
+        <echo message="Creating databases using driver: ${jdbc.driver.directory}\${jdbc.driver.file} ${jdbc.driverClassName}"/>
+        
+        <sql driver="${jdbc.driverClassName}" url="${database.url.empty}"
+                 userid="${jdbc.root.username}" password="${jdbc.root.password}"
+                 print="true" classpathref="jdbc.driver.classpath" encoding="UTF-8">
+            <path>
+                <fileset dir="${basedir}\scripts">
+                    <include name="10-create-database.sql"/>
+                    <include name="20-create-users.sql"/>
+                </fileset>
+            </path>
+        </sql>
+    </target>
+    
+    <target name="db-populate-shared" description="Populate with test shared database.">        
+        <echo message="${database.url.default}"/>
+        <sql driver="${jdbc.driverClassName}" url="${database.url.default}"
+             userid="${jdbc.username}" password="${jdbc.password}"
+             print="true" classpathref="jdbc.driver.classpath" encoding="UTF-8">
+            <path>
+                <fileset dir="${basedir}\scripts">
+                    <include name="30-create-shared-objects.sql"/>
+                </fileset>
+            </path>
+        </sql>
+    </target>
+    
+    <target name="db-populate-test" description="Recreate tables and populate with test data.">        
+        <echo message="${database.url.test}"/>
+        <sql driver="${jdbc.driverClassName}" url="${database.url.test}"
+             userid="${jdbc.username}" password="${jdbc.password}"
+             print="true" classpathref="jdbc.driver.classpath" encoding="UTF-8">
+            <path>
+                <fileset dir="${basedir}\scripts">
+                    <include name="31-create-tenant-objects.sql"/>
+                </fileset>
+            </path>
+        </sql>
+        <echo message="${database.url.another}"/>
+        <sql driver="${jdbc.driverClassName}" url="${database.url.another}"
+             userid="${jdbc.username}" password="${jdbc.password}"
+             print="true" classpathref="jdbc.driver.classpath" encoding="UTF-8">
+            <path>
+                <fileset dir="${basedir}\scripts">
+                    <include name="31-create-tenant-objects.sql"/>
+                </fileset>
+            </path>
+        </sql>
+    </target>
+    
+    <target name="db-populate" description="Recreate tables and populate with test data."
+            depends="db-populate-shared,db-populate-test">        
+    </target>
+</project>
