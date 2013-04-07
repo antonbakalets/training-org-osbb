@@ -1,6 +1,5 @@
 package org.osbb.domain.dao.api;
 
-import org.osbb.domain.dao.api.DaoFacade;
 import org.osbb.domain.model.tenant.Building;
 
 /**

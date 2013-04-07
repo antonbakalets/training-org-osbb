@@ -13,24 +13,19 @@ import org.osbb.domain.model.Identifiable;
 
 /**
  *
- * @author admin
+ * @author Anton Bakalets
  */
-abstract class AbstractDaoFacade<I, T extends Identifiable<I>> implements DaoFacade<I, T> {
+abstract class AbstractDao<I, T extends Identifiable<I>> implements DaoFacade<I, T> {
 
-    protected static Log log = LogFactory.getLog(AbstractDaoFacade.class);
+    protected static Log log = LogFactory.getLog(AbstractDao.class);
     
     protected Class<T> entityClass;
-    
-    @PersistenceContext(unitName = "tenant-unit")
-    private EntityManager entityManager;
-    
-    public AbstractDaoFacade(Class<T> entityClass) {
+        
+    public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
-    protected EntityManager getEntityManager() {
-        return entityManager;
-    }
+    protected abstract EntityManager getEntityManager();
 
     public Class<T> getEntityClass() {
         return entityClass;
@@ -38,7 +33,7 @@ abstract class AbstractDaoFacade<I, T extends Identifiable<I>> implements DaoFac
     
     @Override
     public void insert(T entity) {
-        entityManager.persist(entity);
+        getEntityManager().persist(entity);
     }
 
     @Override
