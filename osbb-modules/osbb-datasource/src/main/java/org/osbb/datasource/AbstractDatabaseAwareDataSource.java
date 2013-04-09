@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.datasource.AbstractDataSource;
 import org.springframework.util.Assert;
@@ -18,7 +18,7 @@ import org.springframework.util.Assert;
  */
 public abstract class AbstractDatabaseAwareDataSource extends AbstractDataSource implements InitializingBean {
 
-    private static Log LOG = LogFactory.getLog(AbstractDatabaseAwareDataSource.class);
+    private static Logger LOG = LoggerFactory.getLogger(AbstractDatabaseAwareDataSource.class);
     
     private Map<String, DataSource> dataSources;
 
@@ -29,8 +29,8 @@ public abstract class AbstractDatabaseAwareDataSource extends AbstractDataSource
      */
     public void afterPropertiesSet() {
         if (this.dataSourceFactory == null) {
-            final IllegalArgumentException iae = new IllegalArgumentException("Property 'dataSourceFactory' is required");
-            LOG.error(iae);
+            final IllegalArgumentException iae = new IllegalArgumentException("Property 'dataSourceFactory' is required.");
+            LOG.error("Property 'dataSourceFactory' is required.", iae);
             throw iae;
         }
         this.dataSources = new HashMap<String, DataSource>();
@@ -74,7 +74,7 @@ public abstract class AbstractDatabaseAwareDataSource extends AbstractDataSource
                 dataSource = dataSourceFactory.createDataSource(databaseName);
                 dataSources.put(databaseName, dataSource);
             } catch (Exception ex) {
-                LOG.error(ex);
+                LOG.error("Exception if an error occurs creating the data source", ex);
             }
         }
         return dataSource;

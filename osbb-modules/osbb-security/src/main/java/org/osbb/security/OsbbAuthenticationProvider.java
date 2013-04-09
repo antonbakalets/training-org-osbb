@@ -1,9 +1,9 @@
 package org.osbb.security;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.osbb.domain.dao.api.PersonDao;
 import org.osbb.domain.model.tenant.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class OsbbAuthenticationProvider extends DaoAuthenticationProvider {
 
-    private static final Log LOG = LogFactory.getLog(OsbbAuthenticationProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OsbbAuthenticationProvider.class);
 
     private PersonDao personDao;
 

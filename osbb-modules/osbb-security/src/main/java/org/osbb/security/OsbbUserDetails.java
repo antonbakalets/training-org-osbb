@@ -4,10 +4,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.osbb.domain.model.shared.UserLogin;
 import org.osbb.domain.model.tenant.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public class OsbbUserDetails implements UserDetails {
 
-    private static final Log LOG = LogFactory.getLog(OsbbUserDetails.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OsbbUserDetails.class);
 
     private String username;
 

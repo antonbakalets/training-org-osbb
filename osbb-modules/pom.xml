@@ -81,11 +81,6 @@
                 <version>${common.dbcp.version}</version>
             </dependency>
             <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>${common.logging.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>displaytag</groupId>
                 <artifactId>displaytag</artifactId>
                 <version>${displaytag.version}</version>
@@ -189,14 +184,31 @@
                 <version>${slf4j.log4j.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
                 <version>${springframework.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${springframework.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -321,8 +333,8 @@
         <junit.version>4.9</junit.version>
         <log4j.version>1.2.15</log4j.version>
         <mysql.version>5.1.15</mysql.version>
-        <slf4j.version>1.6.4</slf4j.version>
-        <slf4j.log4j.version>1.6.4</slf4j.log4j.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <slf4j.log4j.version>1.7.5</slf4j.log4j.version>
         <springframework.version>3.1.0.RELEASE</springframework.version>
         <tiles.version>2.2.2</tiles.version>
         

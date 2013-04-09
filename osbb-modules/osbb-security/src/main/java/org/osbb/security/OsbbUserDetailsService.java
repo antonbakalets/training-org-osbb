@@ -1,11 +1,11 @@
 package org.osbb.security;
 
 import javax.persistence.NoResultException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.osbb.domain.dao.api.UserLoginDao;
 import org.osbb.domain.model.shared.UserLogin;
 import org.osbb.multitenancy.ThreadLocalDatabaseNameHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  */
 public class OsbbUserDetailsService implements UserDetailsService {
 
-    private static final Log LOG = LogFactory.getLog(OsbbUserDetailsService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OsbbUserDetailsService.class);
     
     private UserLoginDao userLoginDao;
 

@@ -5,11 +5,11 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.osbb.domain.bean.PaginationBean;
 import org.osbb.domain.dao.api.DaoFacade;
 import org.osbb.domain.model.Identifiable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -17,7 +17,7 @@ import org.osbb.domain.model.Identifiable;
  */
 abstract class AbstractDao<I, T extends Identifiable<I>> implements DaoFacade<I, T> {
 
-    protected static Log log = LogFactory.getLog(AbstractDao.class);
+    protected static Logger log = LoggerFactory.getLogger(AbstractDao.class);
     
     protected Class<T> entityClass;
         
