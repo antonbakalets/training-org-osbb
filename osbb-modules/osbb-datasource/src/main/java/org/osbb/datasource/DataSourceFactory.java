@@ -3,8 +3,8 @@ package org.osbb.datasource;
 import java.util.Properties;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class DataSourceFactory {
 
-    private static Log LOG = LogFactory.getLog(DataSourceFactory.class);
+    private static Logger LOG = LoggerFactory.getLogger(DataSourceFactory.class);
 
     private String driverClassName;
 
