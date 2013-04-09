@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.1.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <!--  proxy-target-class="true" -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    <import resource="classpath:/com/os/ocinka/context/beans.xml"/>
+    <import resource="classpath:/com/os/ocinka/context/email-context.xml"/>
+    
+    
+    
+    <security:global-method-security secured-annotations="enabled" proxy-target-class="true"/>
+    
+    <!-- support JSR303 annotation if JSR 303 validation present on classpath -->
+    <mvc:annotation-driven />
+    
+    <!-- enable browser caching of static content(images, css, js) -->
+    <mvc:resources mapping="/css/**" location="/css"/>
+    <mvc:resources mapping="/img/**" location="/img"/>
+    <mvc:resources mapping="/js/**" location="/js"/>
+    
+    <!--  aspectj-weaving="on" -->
+    <context:load-time-weaver/>
+    
+    <context:component-scan base-package="com.os.ocinka.controllers" />
+    
+    <!-- enabling annotation driven configuration / -->
+    <context:annotation-config />
+    
+    <!--<oxm:jaxb2-marshaller id="marshaller" contextPath="com.os.ocinka.transform"/>-->
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="marshallerProperties">
+            <map>
+                <entry>
+                    <key>
+                        <util:constant static-field="javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT" />
+                    </key>
+                    <value type="java.lang.Boolean">true</value>
+                </entry>
+            </map>
+        </property>
+        <property name="contextPath" value="com.os.ocinka.transform"/>
+        <property name="schema" value="classpath:/com/os/ocinka/transform/contract.xsd"/>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1" />
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <ref bean="viewResolver"/>
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <bean id="jacksonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+                    <property name="encoding" ref="jsonEncoding" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="jsonEncoding" class="org.codehaus.jackson.JsonEncoding" factory-method="valueOf">
+        <constructor-arg>
+            <value>UTF8</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="order" value="2" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+    </bean>
+    
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/osbb-tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    
+    
+    
+    
+</beans>

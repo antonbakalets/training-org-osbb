@@ -14,10 +14,12 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>osbb-dao-api</module>
+                <module>osbb-dao-hibernate</module>
                 <module>osbb-datasource</module>
                 <module>osbb-model</module>
-                <module>osbb-tenant-dao-api</module>
-                <module>osbb-tenant-dao-hibernate</module>
+                <module>osbb-project-war</module>
+                <module>osbb-security</module>
             </modules>
         </profile>
     </profiles>
@@ -37,13 +39,19 @@
             </dependency>
             <dependency>
                 <groupId>org.osbb</groupId>
-                <artifactId>osbb-tenant-dao-api</artifactId>
+                <artifactId>osbb-security</artifactId>
                 <version>${osbb.modules.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.osbb</groupId>
-                <artifactId>osbb-tenant-dao-hibernate</artifactId>
+                <artifactId>osbb-dao-api</artifactId>
                 <version>${osbb.modules.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.osbb</groupId>
+                <artifactId>osbb-dao-hibernate</artifactId>
+                <version>${osbb.modules.version}</version>
+                <scope>runtime</scope>
             </dependency>
             
             <!-- Common dependencies -->
@@ -169,6 +177,16 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate.validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-log4j12</artifactId>
+                <version>${slf4j.log4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -303,6 +321,8 @@
         <junit.version>4.9</junit.version>
         <log4j.version>1.2.15</log4j.version>
         <mysql.version>5.1.15</mysql.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <slf4j.log4j.version>1.6.4</slf4j.log4j.version>
         <springframework.version>3.1.0.RELEASE</springframework.version>
         <tiles.version>2.2.2</tiles.version>
         
