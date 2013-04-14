@@ -6,6 +6,6 @@ import org.osbb.domain.model.tenant.Person;
  *
  * @author Anton Bakalets
  */
-public interface PersonDao extends DaoFacade<Integer, Person>{
+public interface PersonDao extends DaoFacade<Integer, Person> {
     
 }

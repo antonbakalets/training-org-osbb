@@ -34,7 +34,7 @@ public class DataSourceFactory {
      */
     public BasicDataSource createDataSource(String database) throws Exception {
         final String url = createUrl(database);
-        LOG.debug("Creating datasource for lookup key [" + database + "], url: " + url);
+        LOG.debug("Creating datasource for lookup key [{}], url: {}", database, url);
 
         Properties properties = new Properties();
         properties.setProperty("driverClassName", driverClassName);

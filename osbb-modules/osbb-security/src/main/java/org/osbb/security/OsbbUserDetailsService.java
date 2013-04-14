@@ -24,13 +24,13 @@ public class OsbbUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
         try {
-            LOG.debug("Loading user by username: " + username);
+            LOG.debug("Loading user by username: {}", username);
             final UserLogin userLogin = userLoginDao.loadUserLogin(username);
-            LOG.debug("Loaded user: " + userLogin + ", worker id: " + userLogin.getUserId());
+            LOG.debug("Loaded user: {} , person id: {}", userLogin, userLogin.getUserId());
             ThreadLocalDatabaseNameHolder.setDatabaseName(userLogin.getDatabaseName());
             return new OsbbUserDetails(userLogin);
         } catch (NoResultException nre) {
-            LOG.debug("Cannot find user by name: " + username);
+            LOG.debug("Cannot find user by name: {}", username);
             throw new UsernameNotFoundException("No user with name: " + username);
         }
     }

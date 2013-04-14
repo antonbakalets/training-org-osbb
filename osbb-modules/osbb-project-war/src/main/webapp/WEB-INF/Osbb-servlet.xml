@@ -23,10 +23,9 @@
     <!--  proxy-target-class="true" -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <import resource="classpath:/com/os/ocinka/context/beans.xml"/>
-    <import resource="classpath:/com/os/ocinka/context/email-context.xml"/>
-    
-    
+    <!--<import resource="classpath:/org/osbb/context/beans.xml"/>
+    <import resource="classpath:/org/osbb/context/email-context.xml"/>
+    -->
     
     <security:global-method-security secured-annotations="enabled" proxy-target-class="true"/>
     
@@ -41,13 +40,13 @@
     <!--  aspectj-weaving="on" -->
     <context:load-time-weaver/>
     
-    <context:component-scan base-package="com.os.ocinka.controllers" />
+    <context:component-scan base-package="org.osbb.controllers" />
     
     <!-- enabling annotation driven configuration / -->
     <context:annotation-config />
     
-    <!--<oxm:jaxb2-marshaller id="marshaller" contextPath="com.os.ocinka.transform"/>-->
-    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+    <!--<oxm:jaxb2-marshaller id="marshaller" contextPath="org.osbb.transform"/>-->
+    <!--<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
         <property name="marshallerProperties">
             <map>
                 <entry>
@@ -58,9 +57,9 @@
                 </entry>
             </map>
         </property>
-        <property name="contextPath" value="com.os.ocinka.transform"/>
-        <property name="schema" value="classpath:/com/os/ocinka/transform/contract.xsd"/>
-    </bean>
+        <property name="contextPath" value="org.osbb.transform"/>
+        <property name="schema" value="classpath:/org/osbb/transform/contract.xsd"/>
+    </bean>-->
     
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1" />
@@ -103,8 +102,11 @@
         </property>
     </bean>
 
-    
-    
-    
-    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value>
+            </list>
+        </property>
+    </bean>
 </beans>

@@ -50,6 +50,7 @@
             <path>
                 <fileset dir="${basedir}\scripts">
                     <include name="31-create-tenant-objects.sql"/>
+                    <include name="40-tenant-test-data.sql"/>
                 </fileset>
             </path>
         </sql>
@@ -60,6 +61,7 @@
             <path>
                 <fileset dir="${basedir}\scripts">
                     <include name="31-create-tenant-objects.sql"/>
+                    <include name="40-tenant-another-data.sql"/>
                 </fileset>
             </path>
         </sql>

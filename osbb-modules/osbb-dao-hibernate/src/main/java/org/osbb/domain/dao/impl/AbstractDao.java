@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
  */
 abstract class AbstractDao<I, T extends Identifiable<I>> implements DaoFacade<I, T> {
 
-    protected static Logger log = LoggerFactory.getLogger(AbstractDao.class);
+    protected static Logger LOG = LoggerFactory.getLogger(AbstractDao.class);
     
     protected Class<T> entityClass;
         

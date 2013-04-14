@@ -8,6 +8,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
+    <!-- enabling annotation driven configuration / -->
+    <context:annotation-config />
+    
     <import resource="osbb-security.xml"/>
     <import resource="jpa-context.xml"/> 
     <import resource="dao-context.xml"/> 

@@ -42,16 +42,12 @@ public class OsbbAuthenticationProvider extends DaoAuthenticationProvider {
         // Also ensure we return the original getDetails(), so that future
         // authentication events after cache expiry contain the details
 
-        LOG.debug("Principal:       " + principal);
-        LOG.debug("Authentication:  " + authentication);
-        LOG.debug("User:            " + user);
-
         OsbbUserDetails userDetails = (OsbbUserDetails) user;
         final Integer workerId = userDetails.getPersonId();
 
-        LOG.debug("Loading person by identifier: " + workerId);
+        LOG.debug("Loading person by identifier: {}", workerId);
         final Person person = personDao.findById(workerId);
-        LOG.debug("Loaded person: " + person);
+        LOG.debug("Loaded person: {}", person);
         final OsbbUserDetails loadedPrincipal = new OsbbUserDetails(userDetails, person);
 
         UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(loadedPrincipal,

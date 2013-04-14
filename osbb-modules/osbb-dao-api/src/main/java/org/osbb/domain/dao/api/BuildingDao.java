@@ -6,6 +6,6 @@ import org.osbb.domain.model.tenant.Building;
  *
  * @author Anton Bakalets
  */
-public interface BuildingDao extends DaoFacade<Integer, Building>{
+public interface BuildingDao extends DaoFacade<Integer, Building> {
     
 }

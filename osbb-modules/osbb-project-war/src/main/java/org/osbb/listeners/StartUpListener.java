@@ -13,7 +13,6 @@ public class StartUpListener implements ServletContextListener {
 
     private static Log LOG = LogFactory.getLog(StartUpListener.class);
 
-
     @Override
     public void contextInitialized(final ServletContextEvent sce) {
         LOG.info("OSBB Servlet Start Up!");

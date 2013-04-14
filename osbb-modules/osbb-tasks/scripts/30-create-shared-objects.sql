@@ -17,11 +17,11 @@ CREATE  TABLE IF NOT EXISTS User_Login (
 
 
 -- test --
-INSERT INTO `User_Login` VALUES (1, 'paco', 'hola', 'paco.hola@test.org', 'ocinkal_test', null, 1);
-INSERT INTO `User_Login` VALUES (2, 'jaalonso', 'hola', 'jaalonso.hola@test.org', 'ocinkal_test', null, 2);
-INSERT INTO `User_Login` VALUES (3, 'joko', 'hola', 'joko.hola@test.org', 'ocinkal_test', null, 3);
+INSERT INTO `User_Login` VALUES (1, 'paco', 'hola', 'paco.hola@test.org', 'osbb_test', null, 1);
+INSERT INTO `User_Login` VALUES (2, 'jaalonso', 'hola', 'jaalonso.hola@test.org', 'osbb_test', null, 2);
+INSERT INTO `User_Login` VALUES (3, 'joko', 'hola', 'joko.hola@test.org', 'osbb_test', null, 3);
 
 -- another --
-INSERT INTO `User_Login` VALUES (4, 'Gardo', 'hola', 'gardo.hola@test.org', 'ocinkal_another', null, 4);
-INSERT INTO `User_Login` VALUES (5, 'ramon', 'hola', 'ramon.hola@test.org', 'ocinkal_another', null, 5);
-INSERT INTO `User_Login` VALUES (6, 'hose', 'hola', 'hose.hola@test.org', 'ocinkal_another', null, 6);
+INSERT INTO `User_Login` VALUES (4, 'Gardo', 'hola', 'gardo.hola@test.org', 'osbb_another', null, 4);
+INSERT INTO `User_Login` VALUES (5, 'ramon', 'hola', 'ramon.hola@test.org', 'osbb_another', null, 5);
+INSERT INTO `User_Login` VALUES (6, 'hose', 'hola', 'hose.hola@test.org', 'osbb_another', null, 6);
